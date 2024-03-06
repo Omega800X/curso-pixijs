@@ -1,13 +1,13 @@
-import { Application, Assets, Sprite } from 'pixi.js'
+import { Application, Assets, Container, Sprite } from 'pixi.js'
 import { manifest } from './assets';
 
 async function init() {
 	// Assets.init must only happen once!
 	// Pack all your bundles into one manifest!
-	await Assets.init({manifest: manifest});
+	await Assets.init({ manifest: manifest });
 
 	// Load the bundles you need
-	await Assets.loadBundle("twoSprites");
+	await Assets.loadBundle("sprites");
 }
 
 
@@ -44,12 +44,52 @@ window.addEventListener("resize", () => {
 window.dispatchEvent(new Event("resize"));
 
 init().then(() => {
-	const clampy: Sprite = Sprite.from("Dino the dinosaur");
+	const dino: Sprite = Sprite.from("Dino the dinosaur");
+	const hat: Sprite = Sprite.from("Dinohat");
+	
 
-	console.log("Hola mundo!", clampy.width, clampy.height);
+	hat.scale.set(0.5);
+	hat.position.set(-20, -110);
 
-	clampy.x = 0;
-	clampy.y = 0;
+	const dinoWithHat: Container = new Container();
+	dinoWithHat.addChild(dino);
+	dinoWithHat.addChild(hat);
 
-	app.stage.addChild(clampy);
+	dinoWithHat.scale.set(0.5);
+	dinoWithHat.x = 200;
+	dinoWithHat.y = 300;
+
+	
+
+	const dog: Sprite = Sprite.from("Dog");
+	const basketball: Sprite = Sprite.from("Basketball");
+	basketball.position.set(-100, 130);
+	basketball.scale.set(0.5);
+
+	const dogWithBall: Container = new Container();
+	dogWithBall.addChild(dog);
+	dogWithBall.addChild(basketball);
+
+	dogWithBall.scale.set(0.8);
+	dogWithBall.position.set(1000, 500);
+	dogWithBall.angle = -90;
+
+
+	const dog2: Sprite = Sprite.from("Dog");
+	const hat2: Sprite = Sprite.from("Dinohat");
+
+	hat2.scale.set(0.4);
+	hat2.position.set(30, -130);
+
+	const dogWithHat: Container = new Container();
+	dogWithHat.addChild(dog2);
+	dogWithHat.addChild(hat2);
+
+	dogWithHat.position.set(640, 360);
+	dogWithHat.scale.set(0.5);
+	dogWithHat.rotation = Math.PI;
+
+	app.stage.addChild(dinoWithHat);
+	app.stage.addChild(dogWithBall);
+	app.stage.addChild(dogWithHat);
 });
