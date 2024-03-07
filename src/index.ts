@@ -1,5 +1,6 @@
-import { Application, Assets, Container, Sprite } from 'pixi.js'
+import { Application, Assets } from 'pixi.js'
 import { manifest } from './assets';
+import { Scene } from './Scene';
 
 async function init() {
 	// Assets.init must only happen once!
@@ -44,52 +45,6 @@ window.addEventListener("resize", () => {
 window.dispatchEvent(new Event("resize"));
 
 init().then(() => {
-	const dino: Sprite = Sprite.from("Dino the dinosaur");
-	const hat: Sprite = Sprite.from("Dinohat");
-	
-
-	hat.scale.set(0.5);
-	hat.position.set(-20, -110);
-
-	const dinoWithHat: Container = new Container();
-	dinoWithHat.addChild(dino);
-	dinoWithHat.addChild(hat);
-
-	dinoWithHat.scale.set(0.5);
-	dinoWithHat.x = 200;
-	dinoWithHat.y = 300;
-
-	
-
-	const dog: Sprite = Sprite.from("Dog");
-	const basketball: Sprite = Sprite.from("Basketball");
-	basketball.position.set(-100, 130);
-	basketball.scale.set(0.5);
-
-	const dogWithBall: Container = new Container();
-	dogWithBall.addChild(dog);
-	dogWithBall.addChild(basketball);
-
-	dogWithBall.scale.set(0.8);
-	dogWithBall.position.set(1000, 500);
-	dogWithBall.angle = -90;
-
-
-	const dog2: Sprite = Sprite.from("Dog");
-	const hat2: Sprite = Sprite.from("Dinohat");
-
-	hat2.scale.set(0.4);
-	hat2.position.set(30, -130);
-
-	const dogWithHat: Container = new Container();
-	dogWithHat.addChild(dog2);
-	dogWithHat.addChild(hat2);
-
-	dogWithHat.position.set(640, 360);
-	dogWithHat.scale.set(0.5);
-	dogWithHat.rotation = Math.PI;
-
-	app.stage.addChild(dinoWithHat);
-	app.stage.addChild(dogWithBall);
-	app.stage.addChild(dogWithHat);
+	const myScene = new Scene();
+	app.stage.addChild(myScene);	
 });
