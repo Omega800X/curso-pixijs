@@ -1,6 +1,7 @@
 import { Application, Assets } from 'pixi.js'
 import { manifest } from './assets';
-import { Scene } from './Scene';
+import { Scene } from './scenes/Scene';
+import { TestScene } from './scenes/TestScene';
 
 async function init() {
 	// Assets.init must only happen once!
@@ -46,5 +47,9 @@ window.dispatchEvent(new Event("resize"));
 
 init().then(() => {
 	const myScene = new Scene();
-	app.stage.addChild(myScene);	
+	const testScene = new TestScene();
+
+		
+	app.stage.addChild(myScene);
+	app.stage.addChild(testScene);
 });

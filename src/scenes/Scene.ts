@@ -1,7 +1,7 @@
 import { AnimatedSprite, Container, Graphics, NineSlicePlane, Text, Texture } from "pixi.js";
-import { DinoHat } from "./DinoHat";
-import { DogBall } from "./DogBall";
-import { DogHat } from "./DogHat";
+import { DinoHat } from "../characters/DinoHat";
+import { DogBall } from "../characters/DogBall";
+import { DogHat } from "../characters/DogHat";
 
 export class Scene extends Container {
 
